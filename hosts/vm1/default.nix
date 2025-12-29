@@ -11,6 +11,7 @@
       ./users.nix
       ./packages.nix
       ./nix-settings.nix
+      ./programs.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
