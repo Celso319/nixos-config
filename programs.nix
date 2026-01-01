@@ -5,11 +5,10 @@
     enable = true;
     enableCompletion = true;
     enableGlobalCompInit = false; # disables the new-user wizard
+    interactiveShellInit = ""; # DIE WIZARD
     loginShellInit = ''
       # Show MOTD
-      if [ -f /run/motd.dynamic ]; then
-        cat /run/motd.dynamic
-      fi
+      cat /etc/motd
 
       # System info
       ${pkgs.fastfetch}/bin/fastfetch
