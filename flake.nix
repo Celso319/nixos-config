@@ -29,9 +29,7 @@
                                                                                                                                   '';
 
     commonModules = [
-      ./users.nix
-      ./programs.nix
-      ./modules/motd.nix
+      ./modules
 
     ];
   in {

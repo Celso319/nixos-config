@@ -7,11 +7,11 @@
     enableGlobalCompInit = false; # disables the new-user wizard
     interactiveShellInit = ""; # DIE WIZARD
     loginShellInit = ''
-      # Show MOTD
-      cat /etc/motd
+    # Show MOTD
+    cat /etc/motd
 
-      # System info
-      ${pkgs.fastfetch}/bin/fastfetch
+    # System info
+    #  ${pkgs.fastfetch}/bin/fastfetch
     '';
   };
 

@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{hostName, config, lib, pkgs, ... }:
+{ hostName, config, lib, pkgs, ... }:
 
 {
   imports =
@@ -10,7 +10,6 @@
       ./hardware.nix
       ./packages.nix
       ./nix-settings.nix
-      ./services/ssh.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

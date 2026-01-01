@@ -10,7 +10,6 @@
       ./hardware.nix
       ./packages.nix
       ./nix-settings.nix
-      ./services/ssh.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
