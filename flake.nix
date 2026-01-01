@@ -1,17 +1,68 @@
 {
- description = "Celso NixOS systems";
+  description = ''                                                                                                                                  
+    mmmm   mmmmmmmm  mm          mmmm      mmmm                                                                                   
+  ##""""#  ##""""""  ##        m#""""#    ##""##                                                                                  
+ ##"       ##        ##        ##m       ##    ##                                                                                 
+ ##        #######   ##         "####m   ##    ##                                                                                 
+ ##m       ##        ##             "##  ##    ##                                                                                 
+  ##mmmm#  ##mmmmmm  ##mmmmmm  #mmmmm#"   ##mm##                                                                                  
+    """"   """"""""  """"""""   """""      """"                                                                                   
+                                                                                                                                  
+                                                                                                                                  
+                                                                                                                                  
+ mmm   mm     ##                 mmmm      mmmm                mmmm                                                               
+ ###   ##     ""                ##""##   m#""""#             m#""""#                         ##                                   
+ ##"#  ##   ####     "##  ##"  ##    ##  ##m                 ##m       "##  ###  mm#####m  #######    m####m   ####m##m  mm#####m 
+ ## ## ##     ##       ####    ##    ##   "####m              "####m    ##m ##   ##mmmm "    ##      ##mmmm##  ## ## ##  ##mmmm " 
+ ##  #m##     ##       m##m    ##    ##       "##                 "##    ####"    """"##m    ##      ##""""""  ## ## ##   """"##m 
+ ##   ###  mmm##mmm   m#""#m    ##mm##   #mmmmm#"            #mmmmm#"     ###    #mmmmm##    ##mmm   "##mmmm#  ## ## ##  #mmmmm## 
+ ""   """  """"""""  """  """    """"     """""               """""       ##      """"""      """"     """""   "" "" ""   """"""  
+                                                                        ###                                                       
+                                                                                                                                  '';
 
- inputs = {
-   nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
- };
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+  };
 
- outputs = { self, nixpkgs }: {
-   nixosConfigurations.vm1 =
-     nixpkgs.lib.nixosSystem {
-       system = "x86_64-linux";
-       modules = [
-         ./hosts/vm1
-       ];
-     };
- };
+  outputs = { self, nixpkgs }:
+  let
+    flakeName = self.description;
+
+    commonModules = [
+      ./users.nix
+      ./programs.nix
+      ./modules/motd.nix
+
+    ];
+  in {
+    nixosConfigurations = {
+      vm1 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        specialArgs = {
+          hostName = "vm1";
+          inherit flakeName;
+        };
+
+        modules =
+          commonModules ++ [
+            ./hosts/vm1/default.nix
+          ];
+      };
+
+      mllse = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        specialArgs = {
+          hostName = "mllse";
+          inherit flakeName;
+        };
+
+        modules =
+          commonModules ++ [
+            ./hosts/mllse/default.nix
+          ];
+      };
+    };
+  };
 }
