@@ -3,6 +3,8 @@
 {
 
   users.defaultUserShell = pkgs.zsh;
+  
+  environment.etc."skel/.zshrc".text = ""; # Skeleton files for new users
 
   users.users.celso = {
     isNormalUser = true;
