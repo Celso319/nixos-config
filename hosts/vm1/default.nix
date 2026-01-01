@@ -22,7 +22,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Sao_Paulo";
+  # time.timeZone = "America/Sao_Paulo";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

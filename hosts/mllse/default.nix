@@ -10,6 +10,8 @@
       ./hardware.nix
       ./packages.nix
       ./nix-settings.nix
+      ../../modules/hardware/yt6801.nix
+
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -22,7 +24,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Sao_Paulo";
+  # time.timeZone = "America/Sao_Paulo";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
