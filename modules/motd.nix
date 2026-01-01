@@ -6,6 +6,6 @@
     Host: ${hostName}
     System: ${config.nixpkgs.hostPlatform.system}
     Kernel: ${config.boot.kernelPackages.kernel.version}
-    Generation: ${config.system.stateVersion}
+    State Vesion: ${config.system.stateVersion}
   '';
 }
