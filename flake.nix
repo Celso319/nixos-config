@@ -29,6 +29,8 @@
                                                                                                                                   '';
 
     commonModules = [
+      ./users.nix
+      ./programs.nix
       ./modules
 
     ];
