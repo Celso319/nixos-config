@@ -1,5 +1,13 @@
 {
-  description = ''                                                                                                                                  
+    description = ''Celso NixOS Systems  '';
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+  };
+
+  outputs = { self, nixpkgs }:
+  let
+    flakeName = ''                                                                                                                                  
     mmmm   mmmmmmmm  mm          mmmm      mmmm                                                                                   
   ##""""#  ##""""""  ##        m#""""#    ##""##                                                                                  
  ##"       ##        ##        ##m       ##    ##                                                                                 
@@ -19,14 +27,6 @@
  ""   """  """"""""  """  """    """"     """""               """""       ##      """"""      """"     """""   "" "" ""   """"""  
                                                                         ###                                                       
                                                                                                                                   '';
-
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
-  };
-
-  outputs = { self, nixpkgs }:
-  let
-    flakeName = self.description;
 
     commonModules = [
       ./users.nix
