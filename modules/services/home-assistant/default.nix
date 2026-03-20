@@ -22,6 +22,8 @@ in
       enable = true;
       openFirewall = true;
 
+      configDir = "/var/lib/hass";
+
       config = lib.mkMerge [
         {
           homeassistant = {
