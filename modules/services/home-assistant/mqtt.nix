@@ -15,6 +15,9 @@ in
           port = 1883;
         }
       ];
+
+      persistence = true;
+      persistenceLocation = "/var/lib/mosquitto/";
     };
 
     # Inject MQTT into Home Assistant
