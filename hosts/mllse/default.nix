@@ -117,5 +117,12 @@
 
   system.stateVersion = "25.11"; # Did you read the comment?
 
+  my.home-assistant = {
+    enable = true;
+
+    mqtt.enable = true;
+ #   zigbee.enable = true;
+  };
+
 }
 
