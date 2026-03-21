@@ -17,7 +17,7 @@ in
       ];
 
       persistence = true;
-      persistenceLocation = "/var/lib/mosquitto/";
+      services.mosquitto.dataDir = "/var/lib/mosquitto/";
     };
 
     # Inject MQTT into Home Assistant
