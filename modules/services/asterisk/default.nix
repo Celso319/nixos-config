@@ -113,5 +113,6 @@ qualify_frequency=30
          
       };
     };
+    networking.firewall.enable = false;
   };
 }
