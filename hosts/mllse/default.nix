@@ -119,9 +119,12 @@
 
   my.home-assistant = {
     enable = true;
-
     mqtt.enable = true;
  #   zigbee.enable = true;
+  };
+
+  my.asterisk = {
+    enable = true;
   };
 
 }

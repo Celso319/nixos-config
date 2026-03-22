@@ -1,0 +1,31 @@
+{ config, lib, pkgs, ... }:
+
+let
+  cfg = config.my.asterisk;
+in
+{
+  options.my.asterisk = {
+    enable = lib.mkEnableOption "Asterisk PBX";
+
+    dataDir = lib.mkOption {
+      type = lib.types.str;
+      default = "/var/lib/asterisk";
+
+    };
+  };
+
+    config = lib.mkIf cfg.enable {
+
+    services.asterisk = {
+      enable = true;
+
+      # Where runtime/state data goes
+      stateDir = cfg.dataDir;
+
+      configDir = "/etc/asterisk";
+
+
+    };
+
+  };
+}
