@@ -22,7 +22,6 @@ in
       # Where runtime/state data goes
       stateDir = cfg.dataDir;
 
-      configDir = "/etc/asterisk";
 
 
     };
