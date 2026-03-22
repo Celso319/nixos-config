@@ -20,14 +20,14 @@ in
       persistenceLocation = "/var/lib/mosquitto/";
     };
 
-    # Inject MQTT into Home Assistant
-    services.home-assistant.config = lib.mkMerge [
-      {
-        mqtt = {
-          broker = "127.0.0.1";
-        };
-      }
-    ];
+#    # Inject MQTT into Home Assistant
+#    services.home-assistant.config = lib.mkMerge [
+#      {
+#        mqtt = {
+#          broker = "127.0.0.1";
+#        };
+#      }
+#    ];
 
   };
 }
