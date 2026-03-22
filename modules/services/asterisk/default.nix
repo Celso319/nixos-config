@@ -12,8 +12,7 @@ in
     services.asterisk = {
       enable = true;
 
-      confFiles = {
-        {
+      confFiles = { 
   "extensions.conf" = ''
 [interno]
 
@@ -111,8 +110,6 @@ max_contacts=1
 remove_existing=yes
 qualify_frequency=30
   '';
-}
-
          
       };
     };
