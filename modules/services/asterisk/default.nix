@@ -2,6 +2,7 @@
 
 let
   cfg = config.my.asterisk;
+  confDir = ./asterisk-conf;
 in
 {
   options.my.asterisk = {
@@ -10,6 +11,13 @@ in
     config = lib.mkIf cfg.enable {
     services.asterisk = {
       enable = true;
+
+      confFiles = {
+        asterisk = {
+          "sip.conf" = builtins.readFile "${confDir}/pjsip.conf";
+          "extensions.conf" = builtins.readFile "${confDir}/extensions.conf";
+         };
+      };
     };
   };
 }
