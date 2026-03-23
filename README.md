@@ -8,7 +8,7 @@ Declarative multi-host NixOS configuration using flakes, focused on reproducibil
 
 | Host    | Description                                                         |
 | ------- | ------------------------------------------------------------------- |
-| `mllse` | Main machine (MINI PC CHINêS PAPAI) running core services (Asterisk, Home Assistant, MQTT) |
+| `mllse` | Main machine (MINI PC CHINÊS PAPAI) running core services (Asterisk, Home Assistant, MQTT) |
 | `vm1`   | Virtual machine for testing and experimentation                     |
 
 ---
