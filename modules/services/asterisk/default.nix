@@ -16,7 +16,7 @@ in
   "extensions.conf" = ''
 [interno]
 
-exten => _X,1,Dial(PJSIP/000$${EXTEN})
+exten => _X,1,Dial(PJSIP/000''${EXTEN})
   '';
   "pjsip.conf" = ''
     [transport-udp]
