@@ -12,8 +12,8 @@ in
     services.asterisk = {
       enable = true;
       confFiles = { 
-        "extensions.conf" = ./asterisk-conf/extensions.conf;
-        "pjsip.conf"      = ./asterisk-conf/pjsip.conf;
+        "extensions.conf" = builtins.readFile ./asterisk-conf/extensions.conf;
+        "pjsip.conf"      = builtins.readFile ./asterisk-conf/pjsip.conf;
       };
     };
     networking.firewall.enable = false;
