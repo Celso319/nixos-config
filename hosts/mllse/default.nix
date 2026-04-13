@@ -10,6 +10,7 @@
       ./hardware.nix
       ./packages.nix
       ./nix-settings.nix
+      ../../modules/virtualisation/oci-containers.nix
       ../../modules/hardware/yt6801.nix
 
     ];
