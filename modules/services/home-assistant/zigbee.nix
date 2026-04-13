@@ -6,7 +6,6 @@ in
 {
   config = lib.mkIf (cfg.enable && cfg.zigbee.enable) {
 
-    # Optional: assert MQTT is enabled
     assertions = [
       {
         assertion = cfg.mqtt.enable;
@@ -14,28 +13,28 @@ in
       }
     ];
 
-    # Zigbee2MQTT service
-    systemd.services.zigbee2mqtt = {
-      description = "Zigbee2MQTT";
-      wantedBy = [ "multi-user.target" ];
+    virtualisation.oci-containers.containers = {
 
-      serviceConfig = {
-        ExecStart = "${pkgs.zigbee2mqtt}/bin/zigbee2mqtt";
-        Restart = "always";
+      zigbee2mqtt = {
+        image = "koenkk/zigbee2mqtt";
 
-        # optional hardening
-        DynamicUser = true;
-        StateDirectory = "zigbee2mqtt";
+        ports = [ "8080:8080" ];
+
+        volumes = [
+          "/var/lib/zigbee2mqtt:/app/data"
+        ];
+
+        environment = {
+          TZ = "America/Fortaleza";
+        };
+
+        extraOptions = [
+          "--device=/dev/ttyUSB0"
+          "--network=host"
+        ];
       };
-    };
 
-    # HA side (discovery happens via MQTT)
-    services.home-assistant.config = lib.mkMerge [
-      {
-        # Nothing fancy needed—Z2M publishes automatically
-        homeassistant = { };
-      }
-    ];
+    };
 
   };
 }

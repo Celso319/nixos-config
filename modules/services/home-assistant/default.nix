@@ -18,24 +18,30 @@ in
 
   config = lib.mkIf cfg.enable {
 
-    services.home-assistant = {
-      enable = true;
-      openFirewall = true;
+    virtualisation.oci-containers.containers = lib.mkMerge [
 
-      configDir = "/var/lib/hass";
+      {
+        home-assistant = {
+          image = "ghcr.io/home-assistant/home-assistant:stable";
 
-      config = lib.mkMerge [
-        {
-          homeassistant = {
-            name = "nixos-ha";
-            time_zone = "America/Fortaleza";
-            unit_system = "metric";
+          ports = [ "8123:8123" ];
+
+          volumes = [
+            "/var/lib/hass:/config"
+            "/etc/localtime:/etc/localtime:ro"
+          ];
+
+          environment = {
+            TZ = "America/Fortaleza";
           };
 
-          frontend = {};
-        }
-      ];
-    };
+          extraOptions = [
+            "--network=host"
+          ];
+        };
+      }
+
+    ];
 
   };
 }

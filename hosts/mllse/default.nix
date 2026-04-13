@@ -119,7 +119,7 @@
 
   my.home-assistant = {
     enable = true;
-    mqtt.enable = true;
+ #   mqtt.enable = true;
  #   zigbee.enable = true;
   };
 

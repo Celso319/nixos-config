@@ -6,28 +6,24 @@ in
 {
   config = lib.mkIf (cfg.enable && cfg.mqtt.enable) {
 
-    services.mosquitto = {
-      enable = true;
+    virtualisation.oci-containers.containers = {
 
-      listeners = [
-        {
-          address = "127.0.0.1";
-          port = 1883;
-        }
-      ];
+      mosquitto = {
+        image = "eclipse-mosquitto:latest";
 
-      persistence = true;
-      dataDir = "/var/lib/mosquitto/";
+        ports = [ "1883:1883" ];
+
+        volumes = [
+          "/var/lib/mosquitto:/mosquitto/data"
+          "/var/lib/mosquitto/log:/mosquitto/log"
+        ];
+
+        extraOptions = [
+          "--network=host"
+        ];
+      };
+
     };
-
-#    # Inject MQTT into Home Assistant
-#    services.home-assistant.config = lib.mkMerge [
-#      {
-#        mqtt = {
-#          broker = "127.0.0.1";
-#        };
-#      }
-#    ];
 
   };
 }
