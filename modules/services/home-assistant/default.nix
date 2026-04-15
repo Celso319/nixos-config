@@ -18,6 +18,11 @@ in
 
   config = lib.mkIf cfg.enable {
 
+    systemd.tmpfiles.rules = [
+  "d /var/lib/hass 0755 1000 1000 -"
+];
+
+
     virtualisation.oci-containers.containers = lib.mkMerge [
 
       {
@@ -37,6 +42,7 @@ in
 
           extraOptions = [
             "--network=host"
+            "--user=1000:1000"
           ];
         };
       }
