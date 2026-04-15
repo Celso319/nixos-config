@@ -27,7 +27,7 @@ in
 
       {
         home-assistant = {
-          image = "ghcr.io/home-assistant/home-assistant:stable";
+          image = "ghcr.io/home-assistant/home-assistant:2025.7.3";
 
           ports = [ "8123:8123" ];
 
